@@ -1,0 +1,1 @@
+web: gunicorn cowApp:app
