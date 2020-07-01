@@ -71,9 +71,10 @@ class cowFinder():
         distance = {}
 
         for key in self.feature_Map:
-            euclidean_distance = np.linalg.norm(self.feature_Map[key] - features)
-            distance[key] = euclidean_distance
-
+#             euclidean_distance = np.linalg.norm(self.feature_Map[key] - features)
+#             distance[key] = euclidean_distance
+            cos_distance = spatial.distance.cosine(self.feature_Map[key].flatten(), features.flatten())
+            distance[key] = cos_distance
         closest_img_id = sorted(distance.items(), key=lambda kv: (str(kv[1]), str(kv[0])))[:2]
 
         results = {}
