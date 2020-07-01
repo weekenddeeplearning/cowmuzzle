@@ -1,4 +1,4 @@
-from cowsMuzzle import *
+from cowsMuzzleDNN import *
 import cv2
 import io
 from PIL import Image
@@ -10,7 +10,7 @@ import json
 
 app = Flask(__name__, static_folder='./templates/asserts/')
 
-trainer = cowsMuzzleTrain()
+#trainer = cowsMuzzleTrain()
 finder = cowFinder()
 default_img = r"D:\Documents\Cows_simils\Muzzle Images 2\testing\001.jpg"
 default_trainset = r'./Muzzle Images 2/training'
@@ -21,10 +21,10 @@ def hello():
     return render_template("index.html") #"Hello World!"
 
 
-@app.route('/train')
-def train_model():
-    # train_module = cowsMuzzleTrain()
-    return trainer.training(default_trainset)
+#@app.route('/train')
+#def train_model():
+#    # train_module = cowsMuzzleTrain()
+#    return trainer.training(default_trainset)
 
 
 @app.route('/find', methods=["POST"])
@@ -39,7 +39,7 @@ def find_cow():
     if img is None:
         img = cv2.imread(default_img)
 
-    result = finder.find_top_twe_cows(img, default_trainset)
+    result = finder.find_top_two_cows(img, default_trainset)
     #print(result)
 
     return json.dumps(result)
