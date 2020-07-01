@@ -1,7 +1,6 @@
 from cowsMuzzleDNN import *
 import cv2
 import io
-from PIL import Image
 
 from flask import Flask, request
 from flask import render_template
