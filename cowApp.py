@@ -1,13 +1,16 @@
-from cowsMuzzleDNN import *
+import os
 import cv2
+from cowsMuzzleDNN import *
+
 import io
+
 
 from flask import Flask, request
 from flask import render_template
 
 import json
 
-app = Flask(__name__, static_folder='./templates/asserts/')
+app = Flask(__name__)
 
 #trainer = cowsMuzzleTrain()
 finder = cowFinder()
